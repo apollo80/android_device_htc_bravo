@@ -32,6 +32,9 @@ include device/htc/qsd8k-common/BoardConfigCommon.mk
 
 TARGET_BOOTLOADER_BOARD_NAME := bravo
 
+# Recovery
+TARGET_RECOVERY_FSTAB   := device/htc/bravo/fstab.bravo
+
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 msmsdcc_sdioirq=1 wire.search_count=5
 BOARD_KERNEL_BASE := 0x20000000
 BOARD_KERNEL_NEW_PPPOX := true
@@ -50,13 +53,13 @@ TARGET_USE_KEYBOARD := international
 # Use legacy touchscreen
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
+# Use /sd-ext partision
+BOARD_USE_SDEXT_PARTISION := true
+
 # Hacks
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 BOARD_USE_LEGACY_TRACKPAD := true
 
-
-# Recovery
-TARGET_RECOVERY_FSTAB   := device/htc/bravo/fstab.bravo
 
 # # cat /proc/mtd
 # dev:    size   erasesize  name
@@ -71,3 +74,10 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE :=  262144000 # 0x09100000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 154140672 # 0x093a0000
 BOARD_FLASH_BLOCK_SIZE := 131072
+
+
+#more CM mods
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
+
+LEGACY_RIL := true
+BOARD_USES_LEGACY_RIL := true

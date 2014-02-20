@@ -50,6 +50,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.oem.nosim.ecclist=911,112,999,000,08,118,120,122,110,119,995 \
     ro.ril.emc.mode=2 \
     ro.telephony.ril.v3=signalstrengthgsm,apptypesim \
+    ro.telephony.call_ring.delay=2 \
+    ro.telephony.default_network=0 \
     ro.vold.umsdirtyratio=20
 
 # Set usb type
@@ -99,3 +101,69 @@ $(call inherit-product, device/htc/qsd8k-common/qsd8k.mk)
 
 # Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/bravo/bravo-vendor.mk)
+
+#CM stuff
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cm.version=11.0-apollo80-bravo \
+    ro.modversion=11.0-apollo80-bravo
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dexopt-data-only=1
+
+PRODUCT_PACKAGES += \
+    libnetcmdiface
+
+# packages from system/app
+SDEXT_PRODUCT_PACKAGES := \
+    Apollo \
+    BasicDreams \
+    Bluetooth \
+    BluetoothExt \
+    Browser \
+    Calculator \
+    Calendar \
+    Camera2 \
+    CellBroadcastReceiver \
+    CertInstaller \
+    CMAccount \
+    CMFileManager \
+    CMWallpapers \
+    DeskClock \
+    Development \
+    DocumentsUI \
+    DownloadProviderUi \
+    DSPManager \
+    Email \
+    Exchange2 \
+    Galaxy4 \
+    Gallery2 \
+    HoloSpiralWallpaper \
+    HTMLViewer \
+    InCallUI \
+    KeyChain \
+    LatinIME \
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    LockClock \
+    MagicSmokeWallpapers \
+    NoiseField \
+    PackageInstaller \
+    PacProcessor \
+    PhaseBeam \
+    PhotoTable \
+    PicoTts \
+    PrintSpooler \
+    Provision \
+    QuickSearchBox \
+    SoundRecorder \
+    Stk \
+    TelephonyProvider \
+    Term \
+    ThemeChooser \
+    Torch \
+    UserDictionaryProvider \
+    VideoEditor \
+    VisualizationWallpapers \
+    VoicePlus \
+    WAPPushManager \
+    WhisperPush
