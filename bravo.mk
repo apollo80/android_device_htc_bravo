@@ -54,6 +54,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=0 \
     ro.vold.umsdirtyratio=20
 
+# sdext properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sdext.device=/dev/block/mmcblk0p2 \
+    ro.sdext.folder=/$(TARGET_COPY_OUT_SDEXT) \
+    ro.sdext.fstype=ext4
+
 # Set usb type
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.sys.usb.config=mass_storage \
@@ -167,3 +173,16 @@ SDEXT_PRODUCT_PACKAGES := \
     VoicePlus \
     WAPPushManager \
     WhisperPush
+
+# packages from system/priv-app
+SDEXT_PRODUCT_PACKAGES += \
+    Mms \
+    Settings
+
+# packages from system/lib
+SDEXT_PRODUCT_PACKAGES += \
+    libwebviewchromium
+
+# other packages
+SDEXT_PRODUCT_PACKAGES += \
+    icu-data
