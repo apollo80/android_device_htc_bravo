@@ -102,6 +102,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/bravo/media_profiles.xml:system/etc/media_profiles.xml
 
+# sdext packages and files
+$(call inherit-product, device/htc/passion/passion_sdext_packages.mk)
+$(call inherit-product, device/htc/passion/passion_sdext_files.mk)
+
 # Common qsd8k stuff
 $(call inherit-product, device/htc/qsd8k-common/qsd8k.mk)
 
@@ -114,75 +118,27 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=11.0-apollo80-bravo
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dexopt-data-only=1
+    dalvik.vm.dexopt-data-only=1 \
+    persist.sys.force_highendgfx=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sdext.log.debug=enable \
+    persist.sdext.log.verbose=disable \
+    \
+    persist.sdext.device=/dev/block/mmcblk0p2 \
+    persist.sdext.folder=/sd-ext \
+    persist.sdext.fstype=ext4 \
+    persist.sdext.mount-options=rw,nosuid,nodev,noatime,nodiratime,commit=15 \
+    persist.sdext.mount-options2=barrier=1,stripe=64,data=ordered,noauto_da_alloc \
+    \
+    persist.bind.app=enable \
+    persist.bind.app-asec=enable \
+    persist.bind.app-lib=enable \
+    persist.bind.app-private=enable \
+    persist.bind.dalvik-cache=enable \
+    persist.bind.data=disable
 
 PRODUCT_PACKAGES += \
-    libnetcmdiface
-
-# packages from system/app
-SDEXT_PRODUCT_PACKAGES := \
-    Apollo \
-    BasicDreams \
-    Bluetooth \
-    BluetoothExt \
-    Browser \
-    Calculator \
-    Calendar \
-    Camera2 \
-    CellBroadcastReceiver \
-    CertInstaller \
-    CMAccount \
-    CMFileManager \
-    CMWallpapers \
-    DeskClock \
-    Development \
-    DocumentsUI \
-    DownloadProviderUi \
-    DSPManager \
-    Email \
-    Exchange2 \
-    Galaxy4 \
-    Gallery2 \
-    HoloSpiralWallpaper \
-    HTMLViewer \
-    InCallUI \
-    KeyChain \
-    LatinIME \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    LockClock \
-    MagicSmokeWallpapers \
-    NoiseField \
-    PackageInstaller \
-    PacProcessor \
-    PhaseBeam \
-    PhotoTable \
-    PicoTts \
-    PrintSpooler \
-    Provision \
-    QuickSearchBox \
-    SoundRecorder \
-    Stk \
-    TelephonyProvider \
-    Term \
-    ThemeChooser \
     Torch \
-    UserDictionaryProvider \
-    VideoEditor \
-    VisualizationWallpapers \
-    VoicePlus \
-    WAPPushManager \
-    WhisperPush
-
-# packages from system/priv-app
-SDEXT_PRODUCT_PACKAGES += \
-    Mms \
-    Settings
-
-# packages from system/lib
-SDEXT_PRODUCT_PACKAGES += \
-    libwebviewchromium
-
-# other packages
-SDEXT_PRODUCT_PACKAGES += \
-    icu-data
+    libnetcmdiface \
+    qrngd

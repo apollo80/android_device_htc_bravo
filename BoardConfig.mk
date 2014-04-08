@@ -39,7 +39,7 @@ BOARD_KERNEL_CMDLINE := no_console_suspend=1 msmsdcc_sdioirq=1 wire.search_count
 BOARD_KERNEL_BASE := 0x20000000
 BOARD_KERNEL_NEW_PPPOX := true
 
-TARGET_KERNEL_CONFIG    := evervolv_bravo_defconfig
+TARGET_KERNEL_CONFIG    := apollo80_bravo_defconfig
 
 # to enable the GPS HAL
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := bravo
@@ -76,8 +76,6 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 154140672 # 0x093a0000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 
-#more CM mods
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
-
+# more CM mods
 LEGACY_RIL := true
 BOARD_USES_LEGACY_RIL := true
