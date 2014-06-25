@@ -53,6 +53,11 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 # Use /sd-ext partision
 BOARD_USE_SDEXT_PARTISION := true
 
+# sd-ext settings
+SDEXT_DEVICE_TYPE := EMMC
+SDEXT_PARTISION := /dev/block/mmcblk0p2
+SDEXT_FS_TYPE := ext4
+
 # Hacks
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 BOARD_USE_LEGACY_TRACKPAD := true
@@ -60,6 +65,7 @@ BOARD_USE_LEGACY_TRACKPAD := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB   := device/htc/bravo/fstab.bravo
+TARGET_NO_SEPARATE_RECOVERY := true
 
 # TWRP
 DEVICE_RESOLUTION := 480x800
